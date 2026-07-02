@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -18,6 +20,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val props = Properties().apply{
+            val f = rootProject.file("local.properties")
+            if (f.exists()) load(f.inputStream())
+        }
+        val key = props.getProperty("SUMMARY_API_KEY", "")
+        val url = props.getProperty("SUMMARY_API_BASE_URL", "https://example.com/")
+
+        buildConfigField("String", "SUMMARY_API_KEY", "\"" + key + "\"")
+        buildConfigField("String", "SUMMARY_API_BASE_URL", "\"" + url + "\"")
     }
 
     buildTypes {
@@ -33,7 +45,10 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
+
+
 }
 
 dependencies {
