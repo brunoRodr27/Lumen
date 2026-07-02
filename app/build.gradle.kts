@@ -73,7 +73,7 @@ dependencies {
 
     // Rede (Retrofit + OkHttp + serialização)
     implementation(libs.retrofit)
-    implementation(libs.retrofit.kotlinx.serialization)
+    implementation(libs.jakewharton.kotlinx.serialization)
     implementation(libs.okhttp.logging)
     implementation(libs.kotlinx.serialization.json)
 
