@@ -1,6 +1,6 @@
 package com.example.lumen.domain.model
 
-import com.lumen.app.domain.model.MoodLevel
+import com.example.lumen.domain.model.MoodLevel
 
 data class MoodEntry(
     val id: Long = 0,
